@@ -247,6 +247,7 @@ Los fr son unidades especiales que dividen todo el espacio restante que es usado
     grid-template-rows: repeat(3, 200px);
     gap: 15px;
     padding: 1%;
+    justify-content: center;
 }
 .gridAnimal{
     overflow: hidden;
