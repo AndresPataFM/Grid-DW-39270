@@ -173,8 +173,9 @@ Los fr son unidades especiales que dividen todo el espacio restante que es usado
     /* hace referencia a los grid-area de lso hijos */
     /* cada casilla/celda se separa con un espacio */
     /* GAP  */
-    column-gap: 10px;
-    row-gap: 15px;
+    gap: 10px;
+    /* column-gap: 10px;
+    row-gap: 10px; */
     grid-template-areas: 
     "siete ocho nueve"
     "cuatro cinco seis"
@@ -268,6 +269,11 @@ Los fr son unidades especiales que dividen todo el espacio restante que es usado
     grid-column: 3/4;
     grid-row: 1/2;
 }
+.red{
+    border-color: blue;
+    border-width: 3px;
+    border-style: dashed;
+}
 .gallo{
     grid-column: 4/5;
     grid-row: 1/2;
@@ -291,16 +297,17 @@ Los fr son unidades especiales que dividen todo el espacio restante que es usado
 /*  ==================================*/
 /* auto grids */
 .autoGrid{
+    height: 600px;
     display: grid;
     grid-template-columns: repeat(4, 150px);
-    grid-auto-rows: 250px;
+    grid-auto-rows: minmax(50px, 350px);
     align-items: center;
     justify-items: center;
     justify-content: center;
     background-color: aquamarine;
 }
 
-.autoGridRows{
+.autoGridColumns{
     display: grid;
     /* le indico a grid que llene en columnas en vez de filas */
     grid-auto-flow: column;
@@ -322,4 +329,193 @@ Los fr son unidades especiales que dividen todo el espacio restante que es usado
     justify-content: center;
     background-color: lavender;
 }
+.perro{
+    width: 100%;
+}
+/* Media queries */
 
+/*
+media 
+    estructura
+        @media(condicion){
+            css
+        }
+    condiciones
+        width:
+            max-width
+            min-width
+        interesante:
+            display-mode
+            orientation
+        otras (no les den importancio):
+            any-hover
+            any-pointer
+            aspect-ratio
+            color
+            color-gamut
+            color-index
+            device-aspect-ratio Deprecated
+            device-height Deprecated
+            device-width Deprecated
+            dynamic-range
+            forced-colors
+            grid
+            height
+            hover
+            inverted-colors
+            monochrome
+            overflow-block
+            overflow-inline
+            pointer
+            prefers-color-scheme
+            prefers-contrast
+            prefers-reduced-motion
+            resolution
+            scripting
+            update
+            video-dynamic-range
+    and: nos permite utilizar más de una condición
+        @media (condicion) and (condicion){
+            css
+        }
+    ejemplo: https://codepen.io/andrespatafm/pen/popBwzp
+*/
+
+/* Breakpoints de Pantallas (nos fijamos el width en px)
+    PC:
+        1920
+        1366 (Laptop)
+    Tablet
+        1024
+        720
+    Celular
+        420
+        320
+*/
+
+/* max escriben de mayor a menor */
+/* min escriben de menor a mayor */
+
+
+/* sin prefijos TIENE QUE SER IDENTICO */
+/* @media (width: 1366px){
+    body{
+        background-color: green;
+    }
+} */
+
+/* A- 500px que color tiene */
+/* B- 1250px que color tiene */
+/* c- 1700px que color tiene */
+/* @media screen and (min-width: 1000px) {
+    body {
+        background-color: blueviolet;
+    }
+}
+@media screen and (min-width: 1500px) {
+    body {
+        background-color: red;
+    }
+} */
+
+@media screen and (max-width: 1366px) {
+    .gallery{
+        grid-template-columns: repeat(2, 300px);
+        grid-auto-rows: 200px;
+    }
+    .tortuga{
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+    .gallo{
+        grid-column: 2/3;
+        grid-row: 3/4;
+    }
+    .saltamontes{
+        grid-column: 1/3;
+        grid-row: 4/5;
+    }
+    .medusa{
+        grid-column: 1/2;
+        grid-row: 5/6;
+    }
+    .serpiente{
+        grid-column: 2/3;
+        grid-row: 5/6;
+    }
+    .buho{
+        grid-column: 1/3;
+        grid-row: 6/7;
+    }
+}
+/* 720 */
+@media screen and (max-width: 720px) {
+    .contenedor{
+        grid-template-columns: repeat(2, 220px);
+        grid-auto-rows: 220px;
+        grid-template-areas: 
+        "ocho nueve"
+        "seis siete"
+        "cuatro cinco"
+        "dos tres"
+        "uno ."
+        "cero cero"
+        ;
+    }
+    .gallery{
+        grid-template-columns: 300px;
+    }
+    .gato{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .tortuga{
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+    .gallo{
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+    .saltamontes{
+        grid-column: 1/2;
+        grid-row: 4/5;
+    }
+    .medusa{
+        grid-column: 1/2;
+        grid-row: 5/6;
+    }
+    .serpiente{
+        grid-column: 1/2;
+        grid-row: 6/7;
+    }
+    .buho{
+        grid-column: 1/2;
+        grid-row: 7/8;
+    }
+}
+@media screen and (max-width: 460px) {
+    .contenedor{
+        grid-template-columns: 220px;
+        height: max-content;
+        /* grid-template-rows: 220px; */
+        grid-template-areas: 
+        "nueve"
+        "ocho"
+        "siete"
+        "seis"
+        "cinco"
+        "cuatro"
+        "tres"
+        "dos"
+        "uno"
+        "cero"
+        "cero"
+        ;
+    }
+}
+@media screen and (display-mode: fullscreen) {
+    body {
+        background-color: black;
+    }
+}
